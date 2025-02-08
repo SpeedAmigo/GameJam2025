@@ -10,7 +10,14 @@ public class InteractDetection : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         { 
             _isInTrigger = true;
-            Debug.Log("Kolizja");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        { 
+            _isInTrigger = false;
         }
     }
 
@@ -24,6 +31,17 @@ public class InteractDetection : MonoBehaviour
 
     private void ClickEnemy()
     {
+        RaycastHit2D hit;
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        
+        hit = Physics2D.Raycast(ray.origin, ray.direction);
 
+        if (hit.collider != null)
+        {
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                Debug.Log("Clicked");
+            }
+        }
     }
 }
