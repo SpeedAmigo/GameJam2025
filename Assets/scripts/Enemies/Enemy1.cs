@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -21,6 +22,8 @@ public class Enemy1 : MonoBehaviour, IInteractable
     private int _startActionInterval;
     private bool _isJammed;
     
+    private Coroutine _actionCoroutine;
+    private bool _coroutineRunning;
     
     [SerializeField] private int _satisfactionIncrease;
 
@@ -84,12 +87,17 @@ public class Enemy1 : MonoBehaviour, IInteractable
             yield return new WaitForSeconds(_actionInterval);
         
             _actionInterval = Random.Range(actionIntervalRange.x, actionIntervalRange.y + 1);
-            StartCoroutine(PerformAction());
+
+            if (_coroutineRunning == false)
+            {
+                StartCoroutine(PerformAction());
+            }
         }
     }
     
     private IEnumerator PerformAction()
     {
+        _coroutineRunning = true;
         List<Sprite> selectedList;
         bool isWrongAction = Random.Range(0f, 100f) < enemySO.wrongActionChance;
         wrongAction = false;
@@ -112,6 +120,7 @@ public class Enemy1 : MonoBehaviour, IInteractable
             {
                 wrongAction = true;
                 yield return new WaitForSeconds(wrongActionDuration);
+                _coroutineRunning = false;
             }
             else
             {
@@ -131,7 +140,10 @@ public class Enemy1 : MonoBehaviour, IInteractable
         {
             _spriteRenderer.sprite = enemySO.npcDefaultSprite;
         }
+        
+        
         wrongAction = false;
+        _coroutineRunning = false;
     }
     private void Start()
     {
