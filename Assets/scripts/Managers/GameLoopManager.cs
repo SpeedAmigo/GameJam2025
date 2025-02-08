@@ -17,6 +17,14 @@ public class GameLoopManager
         }
     }
 
+    private int _currentRound = 1;
+
+    public int CurrentRound
+    {
+        get { return _currentRound; }
+        set { _currentRound = value; }
+    }
+
     private int _satisfaction = 50;
 
     public int Satisfaction
