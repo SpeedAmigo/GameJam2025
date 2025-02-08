@@ -41,6 +41,13 @@ public class Enemy1 : MonoBehaviour, IInteractable
         }
     }
     
+    private void Awake()
+    {
+        startActionIntervalRange = new Vector2Int(2, 6);
+        actionIntervalRange = new Vector2Int(2, 6);
+        actionDuration = 2f;
+    }
+
     public void NormalInteract()
     {
         GameLoopManager.Instance.Satisfaction += _satisfactionIncrease;
@@ -125,7 +132,7 @@ public class Enemy1 : MonoBehaviour, IInteractable
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
         _spriteRenderer.sprite = enemySO.npcDefaultSprite;
-        transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+        transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
     }
     
     private void OnEnable()

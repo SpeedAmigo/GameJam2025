@@ -7,6 +7,9 @@ using Random = UnityEngine.Random;
 
 public class RoundManager : MonoBehaviour
 {
+    [SerializeField] Transform player;
+    [SerializeField] Transform spawnPoint;
+    
     [Header("Clock")]
     [SerializeField] private float _roundTime;
     [SerializeField] private TMP_Text _timerText;
@@ -19,8 +22,8 @@ public class RoundManager : MonoBehaviour
     [Header("Flags")]
     private bool _isRoundEnded = false;
     
+    [Header("Spawner")]
     [SerializeField] private List<GameObject> _seats = new List<GameObject>();
-    [SerializeField] private List<Enemy> _enemies = new List<Enemy>();
     [SerializeField] private GameObject _enemyPrefab;
     private List<GameObject> _spawnedEnemies = new List<GameObject>();
     private int _enemiesToSpawn = 5;
@@ -86,6 +89,11 @@ public class RoundManager : MonoBehaviour
         _enemiesToSpawn += 3;
     }
 
+    private void MovePlayerToSpawn()
+    {
+        player.position = spawnPoint.position;
+    }
+
     private IEnumerator ResetRound()
     {
         _isRoundEnded = true;
@@ -96,6 +104,8 @@ public class RoundManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         
         _roundText.gameObject.SetActive(false);
+        GameLoopManager.Instance.Satisfaction = 50;
+        MovePlayerToSpawn();
         SpawnEnemies();
         _timeRemaining = _roundTime;
         _isRoundEnded = false;
