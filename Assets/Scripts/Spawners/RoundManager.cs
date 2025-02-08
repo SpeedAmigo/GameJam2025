@@ -89,7 +89,7 @@ public class RoundManager : MonoBehaviour, IGameEndListener
     
     private void IncreaseEnemiesToSpawn()
     {
-        _enemiesToSpawn += 3;
+        _enemiesToSpawn += 2;
     }
 
     private void MovePlayerToSpawn()
