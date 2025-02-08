@@ -41,7 +41,7 @@ public class InteractDetection : MonoBehaviour
             if (hit.collider.CompareTag("Enemy"))
             {
                 Enemy1 enemy = hit.collider.GetComponent<Enemy1>();
-                enemy.NormalInteract();
+                enemy.OutcomeHandler();
             }
         }
     }

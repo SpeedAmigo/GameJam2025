@@ -269,7 +269,10 @@ MonoBehaviour:
   enemySO: {fileID: 11400000, guid: b30d98588a89f1e428c7caefee223bd1, type: 2}
   startActionIntervalRange: {x: 1, y: 5}
   actionIntervalRange: {x: 3, y: 10}
-  actionDuration: 2
+  neutralActionDuration: 2
+  wrongActionDuration: 10
+  jamDuration: 10
+  wrongAction: 0
   _satisfactionIncrease: 5
 --- !u!61 &90090669
 BoxCollider2D:
@@ -869,7 +872,10 @@ MonoBehaviour:
   enemySO: {fileID: 11400000, guid: 94c34e6e545cbf24da3415af60dd4dc2, type: 2}
   startActionIntervalRange: {x: 2, y: 5}
   actionIntervalRange: {x: 1, y: 5}
-  actionDuration: 3
+  neutralActionDuration: 2
+  wrongActionDuration: 10
+  jamDuration: 10
+  wrongAction: 0
   _satisfactionIncrease: 5
 --- !u!61 &1296556388
 BoxCollider2D:
