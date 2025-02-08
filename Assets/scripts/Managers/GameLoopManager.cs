@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class GameLoopManager
 {
     private static GameLoopManager _instance;
-
     public static GameLoopManager Instance
     {
         get
@@ -17,17 +12,31 @@ public class GameLoopManager
         }
     }
 
-    private int _satisfaction = 50;
+    private int _currentRound = 1;
 
+    public int CurrentRound
+    {
+        get { return _currentRound; }
+        set { _currentRound = value; }
+    }
+
+    private int _enemiesToSpawn = 5;
+
+    public int EnemiesToSpawn
+    {
+        get { return _enemiesToSpawn; }
+        set { _enemiesToSpawn = value; }
+    }
+
+    private int _satisfaction = 50;
     public int Satisfaction
     {
         get { return _satisfaction; }
         set { _satisfaction = value; }
     }
     
-
-    public void EndGame()
+    public void RoundEnd()
     {
-        Debug.Log("Game Over");
+        _currentRound++;
     }
 }
