@@ -17,8 +17,6 @@ public class RoundManager : MonoBehaviour
     void Start()
     {
         SpawnEnemies();
-        _timeRemaining = _roundTime;
-        StartCoroutine(RoundTimer()); 
     }
 
     private void SpawnEnemies()
@@ -26,8 +24,7 @@ public class RoundManager : MonoBehaviour
         int enemiesToSpawn = Mathf.Min(_enemiesToSpawn, _seats.Count);
         
         List<int> randomIndices = new List<int>();
-        
-        while (_spawnedEnemies.Count < enemiesToSpawn)
+        while (randomIndices.Count < enemiesToSpawn)
         {
             int randomIndex = Random.Range(0, _seats.Count);
             if (!randomIndices.Contains(randomIndex))
@@ -38,41 +35,7 @@ public class RoundManager : MonoBehaviour
         
         foreach (int index in randomIndices)
         {
-            GameObject enemy = Instantiate(_enemyPrefab, _seats[index].transform.position, Quaternion.identity);
-            _spawnedEnemies.Add(enemy);
+            Instantiate(_enemyPrefab, _seats[index].transform.position, Quaternion.identity);
         }
     }
-    
-    private IEnumerator RoundTimer()
-    {
-        while (_timeRemaining > 0)
-        {
-            _timeRemaining -= Time.deltaTime;
-            yield return null;  
-        }
-        
-        RoundEnd();
-    }
-    
-    public void RoundEnd()
-    {
-        Debug.Log("Runda " + GameLoopManager.Instance.CurrentRound + " zakończona!");
-        
-        foreach (GameObject enemy in _spawnedEnemies)
-        {
-            Destroy(enemy);  // Zniszczenie obiektu przeciwnika
-        }
-        _spawnedEnemies.Clear();
-        
-        _timeRemaining = _roundTime;
-        IncreaseEnemiesToSpawn();
-        StartCoroutine(RoundTimer());
-        SpawnEnemies();
-    }
-
-    private void IncreaseEnemiesToSpawn()
-    {
-        _enemiesToSpawn++;
-    }
-    
 }
