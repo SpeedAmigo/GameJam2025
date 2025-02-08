@@ -104,6 +104,7 @@ public class RoundManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         
         _roundText.gameObject.SetActive(false);
+        GameLoopManager.Instance.Satisfaction = 50;
         MovePlayerToSpawn();
         SpawnEnemies();
         _timeRemaining = _roundTime;

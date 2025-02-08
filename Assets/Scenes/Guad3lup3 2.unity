@@ -6505,8 +6505,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3715cb0a99966404698524e40a1cc256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  spawnPoint: {fileID: 0}
+  player: {fileID: 2142520681}
+  spawnPoint: {fileID: 1903398155}
   _roundTime: 6
   _timerText: {fileID: 291074737}
   _roundText: {fileID: 968052478}
