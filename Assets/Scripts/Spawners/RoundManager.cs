@@ -16,6 +16,9 @@ public class RoundManager : MonoBehaviour
     [Header("Round")]
     [SerializeField] private TMP_Text _roundText;
     
+    [Header("Flags")]
+    private bool _isRoundEnded = false;
+    
     [SerializeField] private List<GameObject> _seats = new List<GameObject>();
     [SerializeField] private List<Enemy> _enemies = new List<Enemy>();
     [SerializeField] private GameObject _enemyPrefab;
@@ -42,7 +45,7 @@ public class RoundManager : MonoBehaviour
         if(_timeRemaining > 0)
             _timeRemaining -= Time.deltaTime;
 
-        if (_timeRemaining <= 0)
+        if (_timeRemaining <= 0 && !_isRoundEnded)
             StartCoroutine(ResetRound());
         
         _timerText.text = _timeRemaining.ToString("0.0");
@@ -85,6 +88,7 @@ public class RoundManager : MonoBehaviour
 
     private IEnumerator ResetRound()
     {
+        _isRoundEnded = true;
         IncreaseEnemiesToSpawn();
         ClearSpawnedEnemies();
         _roundText.gameObject.SetActive(true);
@@ -94,5 +98,6 @@ public class RoundManager : MonoBehaviour
         _roundText.gameObject.SetActive(false);
         SpawnEnemies();
         _timeRemaining = _roundTime;
+        _isRoundEnded = false;
     }
 }

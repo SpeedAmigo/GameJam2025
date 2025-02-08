@@ -4933,7 +4933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3715cb0a99966404698524e40a1cc256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roundTime: 10
+  _roundTime: 180
   _timerText: {fileID: 291074737}
   _roundText: {fileID: 968052478}
   _seats:
