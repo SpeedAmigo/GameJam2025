@@ -11,14 +11,35 @@ public class Enemy1 : MonoBehaviour, IInteractable
     
     public Vector2Int startActionIntervalRange;
     public Vector2Int actionIntervalRange;
-    public float actionDuration;
+    public float neutralActionDuration;
+    public float wrongActionDuration;
+    public float jamDuration;
 
     public bool wrongAction;
     
     private int _actionInterval;
     private int _startActionInterval;
+    private bool _isJammed;
+    
     
     [SerializeField] private int _satisfactionIncrease;
+
+    public void OutcomeHandler()
+    {
+        if (wrongAction)
+        {
+            Debug.Log("Good eye!");
+            _spriteRenderer.sprite = enemySO.npcDefaultSprite;
+            wrongAction = false;
+            
+            StopCoroutine(CustomerActions());
+            StartCoroutine(JamActions());
+        }
+        else
+        {
+            Debug.Log("Not your lucky day!");
+        }
+    }
     
     public void NormalInteract()
     {
@@ -33,6 +54,15 @@ public class Enemy1 : MonoBehaviour, IInteractable
     private IEnumerator InteractionsStarter()
     {
         yield return new WaitForSeconds(_startActionInterval);
+        StartCoroutine(CustomerActions());
+    }
+
+    private IEnumerator JamActions()
+    {
+        _isJammed = true;
+        yield return new WaitForSeconds(jamDuration);
+        _isJammed = false;
+        
         StartCoroutine(CustomerActions());
     }
 
@@ -70,14 +100,14 @@ public class Enemy1 : MonoBehaviour, IInteractable
             if (isWrongAction)
             {
                 wrongAction = true;
-                yield return new WaitForSeconds(actionDuration);
+                yield return new WaitForSeconds(wrongActionDuration);
             }
             else
             {
                 float elapsedTime = 0f;
-                while (elapsedTime < actionDuration)
+                while (elapsedTime < neutralActionDuration)
                 {
-                    yield return new WaitForSeconds(actionDuration * 0.5f);
+                    yield return new WaitForSeconds(neutralActionDuration * 0.5f);
                     index = Random.Range(0, selectedList.Count);
                     _spriteRenderer.sprite = selectedList[index];
 
@@ -89,7 +119,6 @@ public class Enemy1 : MonoBehaviour, IInteractable
         _spriteRenderer.sprite = enemySO.npcDefaultSprite;
         wrongAction = false;
     }
-    
     private void Start()
     {
         StartCoroutine(InteractionsStarter());
