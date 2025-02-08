@@ -48,7 +48,9 @@ public class Enemy1 : MonoBehaviour, IInteractable
     {
         startActionIntervalRange = new Vector2Int(2, 6);
         actionIntervalRange = new Vector2Int(2, 6);
-        actionDuration = 2f;
+        neutralActionDuration = 5f;
+        wrongActionDuration = 10f;
+        jamDuration = 10f;
     }
 
     public void NormalInteract()
