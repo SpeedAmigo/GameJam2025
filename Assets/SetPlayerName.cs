@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SetPlayerName : MonoBehaviour
 {
@@ -9,8 +10,7 @@ public class SetPlayerName : MonoBehaviour
 
     public void SetName()
     {
-        Debug.Log(name.text);
         GameLoopManager.Instance.PlayerName = name.text;
-        Debug.Log(GameLoopManager.Instance.PlayerName);
+        SceneManager.LoadScene("Game");
     }
 }

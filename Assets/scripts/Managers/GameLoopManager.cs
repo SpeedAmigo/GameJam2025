@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameLoopManager
 {
@@ -58,12 +59,12 @@ public class GameLoopManager
 
     void EndGame()
     {
-        _score = 0;
-        _satisfaction = 50;
-        
         foreach (var listener in _endListeners)
         {
             listener.OnGameEnd();
         }
+        
+        _score = 0;
+        _satisfaction = 50;
     }
 }

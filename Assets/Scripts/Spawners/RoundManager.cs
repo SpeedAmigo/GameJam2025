@@ -7,9 +7,10 @@ using Random = UnityEngine.Random;
 
 public class RoundManager : MonoBehaviour, IGameEndListener
 {
-    [SerializeField] Transform player;
-    [SerializeField] Transform spawnPoint;
-    [SerializeField] Transform leaderboard;
+    [SerializeField] private Leaderboard leaderboardManager;
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Transform leaderboard;
     
     [Header("Clock")]
     [SerializeField] private float _roundTime;
@@ -117,6 +118,8 @@ public class RoundManager : MonoBehaviour, IGameEndListener
 
     public void OnGameEnd()
     {
+        Debug.Log("Game end");
+        leaderboardManager.SetLeaderboardEntry(GameLoopManager.Instance.PlayerName, GameLoopManager.Instance.Score);
         leaderboard.gameObject.SetActive(true);
     }
 }

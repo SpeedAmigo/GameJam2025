@@ -24,7 +24,7 @@ public class Leaderboard : MonoBehaviour
             for (int i = 0; i < loopLength; ++i)
             {
                 names[i].text = msg[i].Username;
-                distances[i].text = msg[i].Score.ToString() + " m";
+                distances[i].text = msg[i].Score.ToString();
             }
         }));
     }
