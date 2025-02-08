@@ -39,8 +39,8 @@ public class RoundManager : MonoBehaviour
     private void SpawnEnemies()
     {
         int enemiesToSpawn = Mathf.Min(_enemiesToSpawn, _seats.Count);
-        
         List<int> randomIndices = new List<int>();
+        
         while (randomIndices.Count < enemiesToSpawn)
         {
             int randomIndex = Random.Range(0, _seats.Count);
@@ -52,12 +52,24 @@ public class RoundManager : MonoBehaviour
         
         foreach (int index in randomIndices)
         {
-            Instantiate(_enemyPrefab, _seats[index].transform.position, Quaternion.identity);
+            GameObject enemy = Instantiate(_enemyPrefab, _seats[index].transform.position, Quaternion.identity);
+            _spawnedEnemies.Add(enemy);
         }
+    }
+
+    private void ClearSpawnedEnemies()
+    {
+        foreach (GameObject enemy in _spawnedEnemies)
+        {
+            Destroy(enemy);
+        }
+        _spawnedEnemies.Clear(); 
     }
 
     private void ResetRound()
     {
+        ClearSpawnedEnemies();
+        SpawnEnemies();
         _timeRemaining = _roundTime;
     }
 }
