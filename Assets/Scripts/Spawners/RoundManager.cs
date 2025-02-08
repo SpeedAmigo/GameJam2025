@@ -19,8 +19,8 @@ public class RoundManager : MonoBehaviour
     [Header("Flags")]
     private bool _isRoundEnded = false;
     
+    [Header("Spawner")]
     [SerializeField] private List<GameObject> _seats = new List<GameObject>();
-    [SerializeField] private List<Enemy> _enemies = new List<Enemy>();
     [SerializeField] private GameObject _enemyPrefab;
     private List<GameObject> _spawnedEnemies = new List<GameObject>();
     private int _enemiesToSpawn = 5;

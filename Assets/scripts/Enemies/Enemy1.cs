@@ -19,7 +19,14 @@ public class Enemy1 : MonoBehaviour, IInteractable
     private int _startActionInterval;
     
     [SerializeField] private int _satisfactionIncrease;
-    
+
+    private void Awake()
+    {
+        startActionIntervalRange = new Vector2Int(2, 6);
+        actionIntervalRange = new Vector2Int(2, 6);
+        actionDuration = 2f;
+    }
+
     public void NormalInteract()
     {
         GameLoopManager.Instance.Satisfaction += _satisfactionIncrease;
