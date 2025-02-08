@@ -20,19 +20,19 @@ public class GameLoopManager
         set { _currentRound = value; }
     }
 
-    private int _enemiesToSpawn = 5;
-
-    public int EnemiesToSpawn
-    {
-        get { return _enemiesToSpawn; }
-        set { _enemiesToSpawn = value; }
-    }
-
     private int _satisfaction = 50;
     public int Satisfaction
     {
         get { return _satisfaction; }
         set { _satisfaction = value; }
+    }
+    
+    private int _score = 0;
+
+    public int Score
+    {
+        get { return _score; }
+        set { _score = value; }
     }
     
     public void RoundEnd()
