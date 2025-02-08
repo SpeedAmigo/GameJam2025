@@ -1,10 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
-    private float _roundTime = 5f;
+    [SerializeField] private float _roundTime;
+    [SerializeField] private TMP_Text _timerText;
     private float _timeRemaining;
     private int _currentRound;
     
@@ -17,6 +18,22 @@ public class RoundManager : MonoBehaviour
     void Start()
     {
         SpawnEnemies();
+    }
+
+    private void Update()
+    {
+        CountdownTimer();
+    }
+
+    private void CountdownTimer()
+    {
+        if(_timeRemaining > 0)
+            _timeRemaining -= Time.deltaTime;
+
+        if (_timeRemaining <= 0)
+            ResetRound();
+        
+        _timerText.text = _timeRemaining.ToString("0.0");
     }
 
     private void SpawnEnemies()
@@ -37,5 +54,10 @@ public class RoundManager : MonoBehaviour
         {
             Instantiate(_enemyPrefab, _seats[index].transform.position, Quaternion.identity);
         }
+    }
+
+    private void ResetRound()
+    {
+        _timeRemaining = _roundTime;
     }
 }
