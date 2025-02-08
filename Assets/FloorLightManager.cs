@@ -9,12 +9,23 @@ public class FloorLightManager : MonoBehaviour
     [Range(0, 50)]
     [SerializeField] private float lightIntensity;
     [SerializeField] private float transitionSpeed;
+    
+    [SerializeField] private GameObject cinemaLights;
 
     private void SetLightsIntensity(float value)
     {
         foreach (Light2D light in floorLights)
         {
             light.intensity = Mathf.Lerp(light.intensity, value, transitionSpeed * Time.deltaTime);
+
+            if (lightIntensity == 0)
+            {
+                cinemaLights.SetActive(false);
+            }
+            else
+            {
+                cinemaLights.SetActive(true);
+            }
         }   
     }
 

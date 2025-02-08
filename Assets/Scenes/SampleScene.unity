@@ -4834,6 +4834,7 @@ MonoBehaviour:
   - {fileID: 643626858}
   lightIntensity: 5
   transitionSpeed: 2
+  cinemaLights: {fileID: 1226735448}
 --- !u!1001 &1067912839
 PrefabInstance:
   m_ObjectHideFlags: 0
