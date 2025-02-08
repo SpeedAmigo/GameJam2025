@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33dcfb840753b86428da99cfdc25bd64, type: 3}
   m_Name: Customer7
   m_EditorClassIdentifier: 
-  npcDefaultSprite: {fileID: 0}
+  npcDefaultSprite: {fileID: 21300000, guid: 091644cb7645e894286fed5cd4fd6fb5, type: 3}
   npcNeutralActionSprites:
   - {fileID: 21300000, guid: 264821e0e8ad98a4b9de41a59bc9ffa0, type: 3}
   - {fileID: 21300000, guid: 4c37bc92a743a8f4dabd2ec50203afde, type: 3}

@@ -14471,7 +14471,7 @@ MonoBehaviour:
   player: {fileID: 255153429}
   spawnPoint: {fileID: 1539807723}
   leaderboard: {fileID: 1105275608}
-  _roundTime: 10
+  _roundTime: 180
   _timerText: {fileID: 1324504356}
   _roundText: {fileID: 724159902}
   _seats:
@@ -14564,6 +14564,19 @@ MonoBehaviour:
   - {fileID: 1854167361}
   - {fileID: 304711224}
   _enemyPrefab: {fileID: 55706224331874178, guid: c1f1d2e4c12ef5845b4e3e98c224a738, type: 3}
+  enemies:
+  - {fileID: 11400000, guid: b30d98588a89f1e428c7caefee223bd1, type: 2}
+  - {fileID: 11400000, guid: 94c34e6e545cbf24da3415af60dd4dc2, type: 2}
+  - {fileID: 11400000, guid: e43d46ba5225c17468b1fb87bb8b2705, type: 2}
+  - {fileID: 11400000, guid: de7f027c1f2a904459d99bcc9fd5f0fb, type: 2}
+  - {fileID: 11400000, guid: bf4107b1e202c0347b4f140d2ccba7ca, type: 2}
+  - {fileID: 11400000, guid: 708fbaf97f16ed9419d7e0a07446e97e, type: 2}
+  - {fileID: 11400000, guid: d2a977d305801ac4896a707480dbe550, type: 2}
+  - {fileID: 11400000, guid: d6700981db27832459f54c2f96687fdf, type: 2}
+  - {fileID: 11400000, guid: e0bc285ea6351e24699a28fe5ec4d520, type: 2}
+  - {fileID: 11400000, guid: cbcadb1f0eaca0140a522978b2bfdecf, type: 2}
+  - {fileID: 11400000, guid: abc97ad7aa5025941bdf9c6018031f00, type: 2}
+  - {fileID: 11400000, guid: e9269a43d6ce4d64e9e9031c7b61cace, type: 2}
 --- !u!1 &2044849450
 GameObject:
   m_ObjectHideFlags: 0

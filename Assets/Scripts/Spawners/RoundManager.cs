@@ -27,8 +27,9 @@ public class RoundManager : MonoBehaviour, IGameEndListener
     [Header("Spawner")]
     [SerializeField] private List<GameObject> _seats = new List<GameObject>();
     [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private List<Enemy> enemies = new List<Enemy>();
     private List<GameObject> _spawnedEnemies = new List<GameObject>();
-    private int _enemiesToSpawn = 1;
+    private int _enemiesToSpawn = 5;
 
     private void Awake()
     {
@@ -75,6 +76,8 @@ public class RoundManager : MonoBehaviour, IGameEndListener
         foreach (int index in randomIndices)
         {
             GameObject enemy = Instantiate(_enemyPrefab, _seats[index].transform.position, Quaternion.identity);
+            int randomEnemy  = Random.Range(0, enemies.Count);
+            enemy.GetComponent<Enemy1>().enemySO = enemies[randomEnemy];
             _spawnedEnemies.Add(enemy);
         }
     }
