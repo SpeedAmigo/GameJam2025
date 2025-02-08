@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33dcfb840753b86428da99cfdc25bd64, type: 3}
-  m_Name: Enemy1
+  m_Name: Enemy2
   m_EditorClassIdentifier: 
   npcDefaultSprite: {fileID: 21300000, guid: 72a4cc16695fe0f4280ee495ff544d38, type: 3}
   npcNeutralActionSprites:
-  - {fileID: 21300000, guid: cf2ed9fd03a9a56449b7f64568d2aeff, type: 3}
   - {fileID: 21300000, guid: c42c1f2cc6cb9c24db05cd630e585578, type: 3}
+  - {fileID: 21300000, guid: cf2ed9fd03a9a56449b7f64568d2aeff, type: 3}
   npcWrongActionSprites:
-  - {fileID: 21300000, guid: 5bc17c8c39ae23544bc42cba67c4cb23, type: 3}
-  - {fileID: 21300000, guid: 267d1844b00726944896916e8447fcda, type: 3}
   - {fileID: 21300000, guid: f9a0b77dfc21a7540952d82503983529, type: 3}
-  wrongActionChance: 67.4
+  - {fileID: 21300000, guid: 267d1844b00726944896916e8447fcda, type: 3}
+  - {fileID: 21300000, guid: 5bc17c8c39ae23544bc42cba67c4cb23, type: 3}
+  wrongActionChance: 4
   numberOfAlerts: 0
