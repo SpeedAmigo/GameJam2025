@@ -103,7 +103,7 @@ public class Enemy1 : MonoBehaviour, IInteractable
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
         _spriteRenderer.sprite = enemySO.npcDefaultSprite;
-        transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+        transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
     }
     
     private void OnEnable()
