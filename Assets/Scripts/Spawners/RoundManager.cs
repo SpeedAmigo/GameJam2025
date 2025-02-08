@@ -1,19 +1,31 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RoundManager : MonoBehaviour
 {
+    [Header("Clock")]
     [SerializeField] private float _roundTime;
     [SerializeField] private TMP_Text _timerText;
     private float _timeRemaining;
     private int _currentRound;
+    
+    [Header("Round")]
+    [SerializeField] private TMP_Text _roundText;
     
     [SerializeField] private List<GameObject> _seats = new List<GameObject>();
     [SerializeField] private List<Enemy> _enemies = new List<Enemy>();
     [SerializeField] private GameObject _enemyPrefab;
     private List<GameObject> _spawnedEnemies = new List<GameObject>();
     private int _enemiesToSpawn = 5;
+
+    private void Awake()
+    {
+        _timeRemaining = _roundTime;
+    }
 
     void Start()
     {
@@ -31,7 +43,7 @@ public class RoundManager : MonoBehaviour
             _timeRemaining -= Time.deltaTime;
 
         if (_timeRemaining <= 0)
-            ResetRound();
+            StartCoroutine(ResetRound());
         
         _timerText.text = _timeRemaining.ToString("0.0");
     }
@@ -65,10 +77,21 @@ public class RoundManager : MonoBehaviour
         }
         _spawnedEnemies.Clear(); 
     }
-
-    private void ResetRound()
+    
+    private void IncreaseEnemiesToSpawn()
     {
+        _enemiesToSpawn += 3;
+    }
+
+    private IEnumerator ResetRound()
+    {
+        IncreaseEnemiesToSpawn();
         ClearSpawnedEnemies();
+        _roundText.gameObject.SetActive(true);
+        
+        yield return new WaitForSeconds(2f);
+        
+        _roundText.gameObject.SetActive(false);
         SpawnEnemies();
         _timeRemaining = _roundTime;
     }
