@@ -120,6 +120,7 @@ public class Enemy1 : MonoBehaviour, IInteractable
             {
                 wrongAction = true;
                 yield return new WaitForSeconds(wrongActionDuration);
+                GameLoopManager.Instance.Satisfaction-=_satisfactionIncrease;
                 _coroutineRunning = false;
             }
             else
