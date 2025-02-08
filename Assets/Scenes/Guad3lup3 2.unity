@@ -779,7 +779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 162250575}
   m_Layer: 0
-  m_Name: Spawners
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4632,7 +4632,7 @@ GameObject:
   - component: {fileID: 1218746765}
   - component: {fileID: 1218746766}
   m_Layer: 0
-  m_Name: EnemiesSpawner
+  m_Name: RoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4704,7 +4704,6 @@ MonoBehaviour:
   - {fileID: 953643124}
   _enemies: []
   _enemyPrefab: {fileID: 55706224331874178, guid: c1f1d2e4c12ef5845b4e3e98c224a738, type: 3}
-  _enemiesToSpawn: 5
 --- !u!1 &1236948882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4983996600139378401, guid: 62c063062b969a948b618624100db8bd, type: 3}
