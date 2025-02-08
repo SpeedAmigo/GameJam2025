@@ -118,7 +118,6 @@ public class RoundManager : MonoBehaviour, IGameEndListener
 
     public void OnGameEnd()
     {
-        Debug.Log("Game end");
         leaderboardManager.SetLeaderboardEntry(GameLoopManager.Instance.PlayerName, GameLoopManager.Instance.Score);
         leaderboard.gameObject.SetActive(true);
     }
