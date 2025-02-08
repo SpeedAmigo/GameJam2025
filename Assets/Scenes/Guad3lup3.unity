@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d3553364960594eb455aa84d26f928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySO: {fileID: 11400000, guid: b30d98588a89f1e428c7caefee223bd1, type: 2}
   _satisfactionIncrease: 5
 --- !u!61 &90090669
 BoxCollider2D:
