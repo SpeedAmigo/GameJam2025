@@ -27,7 +27,7 @@ public class RoundManager : MonoBehaviour, IGameEndListener
     [SerializeField] private List<GameObject> _seats = new List<GameObject>();
     [SerializeField] private GameObject _enemyPrefab;
     private List<GameObject> _spawnedEnemies = new List<GameObject>();
-    private int _enemiesToSpawn = 5;
+    private int _enemiesToSpawn = 1;
 
     private void Awake()
     {

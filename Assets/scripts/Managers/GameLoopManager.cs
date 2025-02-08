@@ -15,6 +15,14 @@ public class GameLoopManager
         }
     }
 
+    private string _playerName;
+
+    public string PlayerName
+    {
+        get { return _playerName; }
+        set { _playerName = value; }
+    }
+
     private int _satisfaction = 50;
     public int Satisfaction
     {
