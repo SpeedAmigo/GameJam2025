@@ -14,6 +14,12 @@ public class PlayerScript : MonoBehaviour
     // Set input values to Vector2
     private void HandleInput()
     {
+        if (GameStateManager.CurrentGameState != GameState.InGame)
+        {
+            _movement = Vector2.zero;
+            return;
+        }
+
         _movement.x = Input.GetAxisRaw("Horizontal");
         _movement.y = Input.GetAxisRaw("Vertical");
 
