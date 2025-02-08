@@ -5,10 +5,11 @@ using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class RoundManager : MonoBehaviour
+public class RoundManager : MonoBehaviour, IGameEndListener
 {
     [SerializeField] Transform player;
     [SerializeField] Transform spawnPoint;
+    [SerializeField] Transform leaderboard;
     
     [Header("Clock")]
     [SerializeField] private float _roundTime;
@@ -31,6 +32,7 @@ public class RoundManager : MonoBehaviour
     private void Awake()
     {
         _timeRemaining = _roundTime;
+        GameLoopManager.Instance.RegisterListener(this);
     }
 
     void Start()
@@ -41,6 +43,7 @@ public class RoundManager : MonoBehaviour
     private void Update()
     {
         CountdownTimer();
+        Debug.Log(GameLoopManager.Instance.Satisfaction);
     }
 
     private void CountdownTimer()
@@ -105,9 +108,15 @@ public class RoundManager : MonoBehaviour
         
         _roundText.gameObject.SetActive(false);
         GameLoopManager.Instance.Satisfaction = 50;
+        GameLoopManager.Instance.Score++;
         MovePlayerToSpawn();
         SpawnEnemies();
         _timeRemaining = _roundTime;
         _isRoundEnded = false;
+    }
+
+    public void OnGameEnd()
+    {
+        leaderboard.gameObject.SetActive(true);
     }
 }
