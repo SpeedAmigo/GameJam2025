@@ -24,4 +24,9 @@ public class GameLoopManager
         get { return _satisfaction; }
         set { _satisfaction = value; }
     }
+
+    public void EndGame()
+    {
+        Debug.Log("Game Over");
+    }
 }
