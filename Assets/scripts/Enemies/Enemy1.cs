@@ -34,6 +34,7 @@ public class Enemy1 : MonoBehaviour, IInteractable
             Debug.Log("Good eye!");
             _spriteRenderer.sprite = enemySO.npcDefaultSprite;
             wrongAction = false;
+            GameLoopManager.Instance.Satisfaction+=_satisfactionIncrease;
             
             StopCoroutine(CustomerActions());
             StartCoroutine(JamActions());
@@ -41,12 +42,13 @@ public class Enemy1 : MonoBehaviour, IInteractable
         else
         {
             Debug.Log("Not your lucky day!");
+            GameLoopManager.Instance.Satisfaction-=_satisfactionIncrease;
         }
     }
     
     private void Awake()
     {
-        startActionIntervalRange = new Vector2Int(2, 6);
+        startActionIntervalRange = new Vector2Int(2, 50);
         actionIntervalRange = new Vector2Int(2, 6);
         neutralActionDuration = 5f;
         wrongActionDuration = 10f;
@@ -118,6 +120,7 @@ public class Enemy1 : MonoBehaviour, IInteractable
             {
                 wrongAction = true;
                 yield return new WaitForSeconds(wrongActionDuration);
+                GameLoopManager.Instance.Satisfaction-=_satisfactionIncrease;
                 _coroutineRunning = false;
             }
             else

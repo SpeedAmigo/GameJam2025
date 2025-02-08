@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
 public class GameLoopManager
 {
     private static GameLoopManager _instance;
@@ -12,19 +16,25 @@ public class GameLoopManager
         }
     }
 
-    private int _currentRound = 1;
+    private string _playerName;
 
-    public int CurrentRound
+    public string PlayerName
     {
-        get { return _currentRound; }
-        set { _currentRound = value; }
+        get { return _playerName; }
+        set { _playerName = value; }
     }
 
     private int _satisfaction = 50;
     public int Satisfaction
     {
         get { return _satisfaction; }
-        set { _satisfaction = value; }
+        set
+        {
+            _satisfaction = value;
+            
+            if (_satisfaction <= 0)
+                EndGame();
+        }
     }
     
     private int _score = 0;
@@ -35,8 +45,26 @@ public class GameLoopManager
         set { _score = value; }
     }
     
-    public void RoundEnd()
+    private List<IGameEndListener> _endListeners = new List<IGameEndListener>();
+    
+    public void RegisterListener(IGameEndListener listener)
     {
-        _currentRound++;
+        _endListeners.Add(listener);
+    }
+
+    public void UnregisterListener(IGameEndListener listener)
+    {
+        _endListeners.Remove(listener);
+    }
+
+    void EndGame()
+    {
+        foreach (var listener in _endListeners)
+        {
+            listener.OnGameEnd();
+        }
+        
+        _score = 0;
+        _satisfaction = 50;
     }
 }

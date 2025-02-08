@@ -5,10 +5,12 @@ using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class RoundManager : MonoBehaviour
+public class RoundManager : MonoBehaviour, IGameEndListener
 {
-    [SerializeField] Transform player;
-    [SerializeField] Transform spawnPoint;
+    [SerializeField] private Leaderboard leaderboardManager;
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Transform leaderboard;
     
     [Header("Clock")]
     [SerializeField] private float _roundTime;
@@ -26,11 +28,12 @@ public class RoundManager : MonoBehaviour
     [SerializeField] private List<GameObject> _seats = new List<GameObject>();
     [SerializeField] private GameObject _enemyPrefab;
     private List<GameObject> _spawnedEnemies = new List<GameObject>();
-    private int _enemiesToSpawn = 5;
+    private int _enemiesToSpawn = 1;
 
     private void Awake()
     {
         _timeRemaining = _roundTime;
+        GameLoopManager.Instance.RegisterListener(this);
     }
 
     void Start()
@@ -41,6 +44,7 @@ public class RoundManager : MonoBehaviour
     private void Update()
     {
         CountdownTimer();
+        Debug.Log(GameLoopManager.Instance.Satisfaction);
     }
 
     private void CountdownTimer()
@@ -86,7 +90,7 @@ public class RoundManager : MonoBehaviour
     
     private void IncreaseEnemiesToSpawn()
     {
-        _enemiesToSpawn += 3;
+        _enemiesToSpawn += 2;
     }
 
     private void MovePlayerToSpawn()
@@ -105,9 +109,16 @@ public class RoundManager : MonoBehaviour
         
         _roundText.gameObject.SetActive(false);
         GameLoopManager.Instance.Satisfaction = 50;
+        GameLoopManager.Instance.Score++;
         MovePlayerToSpawn();
         SpawnEnemies();
         _timeRemaining = _roundTime;
         _isRoundEnded = false;
+    }
+
+    public void OnGameEnd()
+    {
+        leaderboardManager.SetLeaderboardEntry(GameLoopManager.Instance.PlayerName, GameLoopManager.Instance.Score);
+        leaderboard.gameObject.SetActive(true);
     }
 }
