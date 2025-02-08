@@ -36,11 +36,12 @@ public class InteractDetection : MonoBehaviour
         
         hit = Physics2D.Raycast(ray.origin, ray.direction);
 
-        if (hit.collider != null)
+        if (hit.collider)
         {
             if (hit.collider.CompareTag("Enemy"))
             {
-                Debug.Log("Clicked");
+                Enemy1 enemy = hit.collider.GetComponent<Enemy1>();
+                enemy.Interact();
             }
         }
     }

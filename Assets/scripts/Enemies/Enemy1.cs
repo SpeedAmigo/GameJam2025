@@ -3,27 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy1 : MonoBehaviour, IInteractable 
+public class Enemy1 : MonoBehaviour, IInteractable
 {
-    // private bool _isInTrigger = false;
-    // private void OnMouseOver()
-    // {
-    //     if (Input.GetMouseButtonDown(0) && _isInTrigger)
-    //     {
-    //         Interact();
-    //     }
-    // }
-    //
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("Player"))
-    //     {
-    //         _isInTrigger = true;
-    //     }
-    // }
-
-    public void Interact()
+    [SerializeField] private int _satisfactionIncrease;
+    public void NormalInteract()
     {
-        Debug.Log("Interact");
+        GameLoopManager.Instance.Satisfaction += _satisfactionIncrease;
+    }
+
+    public void HardInteract()
+    {
+        GameLoopManager.Instance.Satisfaction += _satisfactionIncrease;
     }
 }
