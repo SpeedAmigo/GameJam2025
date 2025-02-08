@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33dcfb840753b86428da99cfdc25bd64, type: 3}
+  m_Name: Customer10
+  m_EditorClassIdentifier: 
+  npcDefaultSprite: {fileID: 21300000, guid: 59ed166f54fe5034abd943337a73ebf5, type: 3}
+  npcNeutralActionSprites:
+  - {fileID: 21300000, guid: f7af4a2357a20554eace35afa51b5792, type: 3}
+  - {fileID: 21300000, guid: c97dbfaff55f3b0408e6f585b914795c, type: 3}
+  npcWrongActionSprites:
+  - {fileID: 21300000, guid: 07e8c0d2ea428404f9acabb1f3d1f470, type: 3}
+  - {fileID: 21300000, guid: d5ac19d787f22014b8fefd4263a0acb2, type: 3}
+  - {fileID: 21300000, guid: a74764f019c78ca4c8e8505f9f221b25, type: 3}
+  wrongActionChance: 50

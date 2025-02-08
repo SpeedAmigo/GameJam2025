@@ -4,8 +4,11 @@ public class PlayerScript : MonoBehaviour
 {
     private Rigidbody2D _body;
     private Vector2 _movement;
+    private AudioSource _audio;
     [SerializeField] private Vector2 _lastMove;
     private Animator _animator;
+    private float soundDelay = 1f;
+    private float soundTimer;
     
     [Range(1, 5)]
     [SerializeField] private float _speed;
@@ -34,18 +37,33 @@ public class PlayerScript : MonoBehaviour
         _animator.SetFloat("LastHorizontal", _lastMove.x);
         _animator.SetFloat("LastVertical", _lastMove.y);
     }
-    
+
+    private void PlaySound()
+    {
+        float randomPitch = Random.Range(0.8f, 1.2f);
+        _audio.pitch = randomPitch;
+        _audio.PlayOneShot(_audio.clip);
+    }
+
+    private void SoundControl()
+    {
+        if (_movement.sqrMagnitude < 0.1f) _audio.Stop();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         _body = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _audio = GetComponent<AudioSource>();
+        soundTimer = soundDelay;
     }
 
     // Update is called once per frame
     void Update()
     {
         HandleInput();
+        SoundControl();
     }
     private void FixedUpdate()
     {
