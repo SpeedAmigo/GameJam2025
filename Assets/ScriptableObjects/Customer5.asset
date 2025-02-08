@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcDefaultSprite: {fileID: 21300000, guid: e13d4996c36be3445941b7d96ba9246e, type: 3}
   npcNeutralActionSprites:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 778b162da7f03f0458b4c28677c12aa0, type: 3}
   - {fileID: 21300000, guid: bbbb1a8c0fcf54044924120cc80ba4fd, type: 3}
   npcWrongActionSprites:
   - {fileID: 21300000, guid: 6d1fa4514530e0241a1338a8f7f54bac, type: 3}
