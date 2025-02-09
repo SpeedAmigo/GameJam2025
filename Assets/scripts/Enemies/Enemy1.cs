@@ -48,8 +48,8 @@ public class Enemy1 : MonoBehaviour, IInteractable
     
     private void Awake()
     {
-        startActionIntervalRange = new Vector2Int(2, 50);
-        actionIntervalRange = new Vector2Int(2, 6);
+        startActionIntervalRange = new Vector2Int(2, 10);
+        actionIntervalRange = new Vector2Int(2, 10);
         neutralActionDuration = 5f;
         wrongActionDuration = 10f;
         jamDuration = 10f;
