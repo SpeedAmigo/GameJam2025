@@ -8,6 +8,10 @@ public class EndGameScreen : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("Game");
-        Debug.Log("Scena");
+    }
+    
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
