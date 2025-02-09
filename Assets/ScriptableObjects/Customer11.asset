@@ -20,4 +20,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9320c171d3a72d641aa15149d409a8a4, type: 3}
   - {fileID: 21300000, guid: 6b51851ad4e9cad4b895c9a893c9c221, type: 3}
   - {fileID: 21300000, guid: cbb19a5518168ee4ab7ba2e577db1262, type: 3}
-  wrongActionChance: 50
+  wrongActionChance: 60

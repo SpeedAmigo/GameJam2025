@@ -56,7 +56,9 @@ public class RoundManager : MonoBehaviour, IGameEndListener
         if (_timeRemaining <= 0 && !_isRoundEnded)
             StartCoroutine(ResetRound());
         
-        _timerText.text = _timeRemaining.ToString("0.0");
+        int minutes = Mathf.FloorToInt(_timeRemaining / 60);
+        int seconds = Mathf.FloorToInt(_timeRemaining % 60);
+        _timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     private void SpawnEnemies()
