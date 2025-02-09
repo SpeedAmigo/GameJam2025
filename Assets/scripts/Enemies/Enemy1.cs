@@ -23,12 +23,16 @@ public class Enemy1 : MonoBehaviour, IInteractable
     private bool _isJammed;
     
     private Coroutine _actionCoroutine;
+    private AudioSource _audioSource;
     private bool _coroutineRunning;
     
     [SerializeField] private int _satisfactionIncrease;
+    [SerializeField] private List<AudioClip> clips;
 
     public void OutcomeHandler()
     {
+        _audioSource.PlayOneShot(clips[0]);
+        
         if (wrongAction)
         {
             Debug.Log("Good eye!");
@@ -150,6 +154,8 @@ public class Enemy1 : MonoBehaviour, IInteractable
     {
         StartCoroutine(InteractionsStarter());
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _audioSource = GetComponent<AudioSource>();
+        clips = new List<AudioClip>(enemySO.sounds);
 
         _spriteRenderer.sprite = enemySO.npcDefaultSprite;
         transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);

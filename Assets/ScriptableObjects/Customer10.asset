@@ -20,4 +20,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 07e8c0d2ea428404f9acabb1f3d1f470, type: 3}
   - {fileID: 21300000, guid: d5ac19d787f22014b8fefd4263a0acb2, type: 3}
   - {fileID: 21300000, guid: a74764f019c78ca4c8e8505f9f221b25, type: 3}
+  sounds:
+  - {fileID: 8300000, guid: bb49e7814a590714aa90b1c960ce3a31, type: 3}
   wrongActionChance: 60
