@@ -40,6 +40,7 @@ public class RoundManager : MonoBehaviour, IGameEndListener
     void Start()
     {
         SpawnEnemies();
+        leaderboard.gameObject.SetActive(false);
     }
 
     private void Update()
