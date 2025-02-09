@@ -11,7 +11,8 @@ public class RoundManager : MonoBehaviour, IGameEndListener
     [SerializeField] private Transform player;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform leaderboard;
-    
+    [SerializeField] private ScreenScript screen;
+
     [Header("Clock")]
     [SerializeField] private float _roundTime;
     [SerializeField] private TMP_Text _timerText;
@@ -118,6 +119,8 @@ public class RoundManager : MonoBehaviour, IGameEndListener
         GameLoopManager.Instance.Score++;
         MovePlayerToSpawn();
         SpawnEnemies();
+        screen.StopAudioMovie();
+        screen.PlayAudioMovie();
         _timeRemaining = _roundTime;
         _isRoundEnded = false;
     }

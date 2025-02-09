@@ -15058,6 +15058,7 @@ MonoBehaviour:
   player: {fileID: 255153429}
   spawnPoint: {fileID: 1539807723}
   leaderboard: {fileID: 1105275608}
+  screen: {fileID: 238773930}
   _roundTime: 180
   _timerText: {fileID: 1324504356}
   _roundText: {fileID: 724159902}

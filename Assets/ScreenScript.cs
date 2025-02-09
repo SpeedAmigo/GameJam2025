@@ -11,10 +11,10 @@ public class ScreenScript : MonoBehaviour
     private AudioSource _audioSource;
     private AudioClip _lastClip;
 
-    public void PlayAudioMovie(List<AudioClip> clips)
+    public void PlayAudioMovie()
     {
-        int clipIndex = Random.Range(0, clips.Count);
-        _audioSource.clip = clips[clipIndex];
+        int clipIndex = Random.Range(0, audioMovieClips.Count);
+        _audioSource.clip = audioMovieClips[clipIndex];
         _audioSource.PlayOneShot(_audioSource.clip);
     }
 
@@ -26,6 +26,6 @@ public class ScreenScript : MonoBehaviour
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        PlayAudioMovie(audioMovieClips);
+        PlayAudioMovie();
     }
 }
