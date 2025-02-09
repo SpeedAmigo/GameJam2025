@@ -6,14 +6,14 @@ using UnityEngine.UI;
 
 public class SatisfactionBar : MonoBehaviour
 {
-    private Slider slider;
+    private Image slider;
     private void Awake()
     {
-        slider = GetComponent<Slider>();
+        slider = GetComponent<Image>();
     }
 
     private void Update()
     {
-        slider.value = GameLoopManager.Instance.Satisfaction / 100f;
+        slider.fillAmount = GameLoopManager.Instance.Satisfaction / 100f;
     }
 }
