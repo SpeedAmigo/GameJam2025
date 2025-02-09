@@ -63,8 +63,5 @@ public class GameLoopManager
         {
             listener.OnGameEnd();
         }
-        
-        _score = 0;
-        _satisfaction = 50;
     }
 }

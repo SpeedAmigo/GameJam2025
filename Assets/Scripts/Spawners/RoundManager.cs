@@ -21,6 +21,7 @@ public class RoundManager : MonoBehaviour, IGameEndListener
     
     [Header("Round")]
     [SerializeField] private TMP_Text _roundText;
+    [SerializeField] private TMP_Text _scoreText;
     
     [Header("Flags")]
     private bool _isRoundEnded = false;
@@ -36,6 +37,8 @@ public class RoundManager : MonoBehaviour, IGameEndListener
     {
         _timeRemaining = _roundTime;
         GameLoopManager.Instance.RegisterListener(this);
+        GameLoopManager.Instance.Satisfaction = 50;
+        GameLoopManager.Instance.Score = 0;
     }
 
     void Start()
@@ -48,6 +51,8 @@ public class RoundManager : MonoBehaviour, IGameEndListener
     {
         CountdownTimer();
         Debug.Log(GameLoopManager.Instance.Satisfaction);
+        Debug.Log(GameLoopManager.Instance.Score);
+        Debug.Log(GameLoopManager.Instance.PlayerName);
     }
 
     private void CountdownTimer()
@@ -128,6 +133,7 @@ public class RoundManager : MonoBehaviour, IGameEndListener
     public void OnGameEnd()
     {
         leaderboardManager.SetLeaderboardEntry(GameLoopManager.Instance.PlayerName, GameLoopManager.Instance.Score);
+        _scoreText.text = "Twój wynik: " + GameLoopManager.Instance.Score;
         leaderboard.gameObject.SetActive(true);
     }
 }
